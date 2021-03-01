@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: main-app-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main-app
+  template:
+    metadata:
+      labels:
+        app: main-app
+    spec:
+      volumes:
+        - name: shared-main
+          emptyDir: {}
+      containers:
+        - name: main-app
+          image: joonashak/dwk-main-app
+          volumeMounts:
+          - name: shared-main
+            mountPath: /app/files
+        - name: main-app-server
+          image: joonashak/dwk-main-app-server
+          volumeMounts:
+          - name: shared-main
+            mountPath: /app/files

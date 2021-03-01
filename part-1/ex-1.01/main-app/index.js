@@ -1,11 +1,5 @@
-const express = require("express");
-const { generate } = require("randomstring");
+const fs = require("fs");
 
-const s = generate();
-
-setInterval(() => console.log(`${new Date()} ${s}`), 5000);
-
-const server = express();
-server.get("*", (req, res) => res.send(`${new Date()} ${s}`));
-
-server.listen(3000);
+setInterval(() => {
+  fs.writeFileSync("/app/files/timestamp", new Date().toISOString());
+}, 5000);
