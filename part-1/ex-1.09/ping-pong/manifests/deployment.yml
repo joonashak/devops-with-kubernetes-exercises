@@ -12,6 +12,13 @@ spec:
       labels:
         app: ping-pong
     spec:
+      volumes:
+        - name: pv-main
+          persistentVolumeClaim:
+            claimName: main-app-claim
       containers:
         - name: ping-pong
           image: joonashak/dwk-ping-pong
+          volumeMounts:
+          - name: pv-main
+            mountPath: /app/pv
