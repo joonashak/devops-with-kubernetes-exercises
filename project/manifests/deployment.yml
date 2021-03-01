@@ -12,6 +12,13 @@ spec:
       labels:
         app: project-server
     spec:
+      volumes:
+        - name: pv
+          persistentVolumeClaim:
+            claimName: project-claim
       containers:
         - name: project-server
           image: joonashak/dwk-project-server
+          volumeMounts:
+          - name: pv
+            mountPath: /app/assets

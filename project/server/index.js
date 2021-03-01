@@ -1,7 +1,12 @@
-const express = require('express')
-const server = express()
-const port = 3000
+const express = require("express");
+const dailyImage = require("./dailyImage");
 
-server.get('*', (req, res) => res.send('Hello, world!'))
+const server = express();
+const port = 3000;
 
-server.listen(port, () => console.log(`Server started in port ${port}`))
+server.use(dailyImage);
+
+server.get("/daily", (req, res) => res.sendFile("/app/assets/daily.jpg"));
+server.get("*", (req, res) => res.send("Hello, world!"));
+
+server.listen(port, () => console.log(`Server started in port ${port}`));
