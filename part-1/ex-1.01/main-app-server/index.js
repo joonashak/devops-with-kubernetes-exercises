@@ -1,3 +1,4 @@
+const axios = require("axios");
 const express = require("express");
 const fs = require("fs");
 const { generate } = require("randomstring");
@@ -5,10 +6,10 @@ const { generate } = require("randomstring");
 const s = generate();
 
 const server = express();
-server.get("*", (req, res) => {
+server.get("*", async (req, res) => {
   const timestamp = fs.readFileSync("/app/files/timestamp");
-  const pingpongs = fs.readFileSync("/app/pv/pingpongs");
-  res.send(`${timestamp} ${s}<br />Ping / Pongs: ${pingpongs}`);
+  const result = await axios.get("http://ping-pong-svc:2345/n");
+  res.send(`${timestamp} ${s}<br />Ping / Pongs: ${result.data}`);
 });
 
 server.listen(3000);

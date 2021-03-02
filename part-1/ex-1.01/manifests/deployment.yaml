@@ -15,9 +15,6 @@ spec:
       volumes:
         - name: shared-main
           emptyDir: {}
-        - name: pv-main
-          persistentVolumeClaim:
-            claimName: main-app-claim
       containers:
         - name: main-app
           image: joonashak/dwk-main-app
@@ -29,5 +26,3 @@ spec:
           volumeMounts:
           - name: shared-main
             mountPath: /app/files
-          - name: pv-main
-            mountPath: /app/pv
