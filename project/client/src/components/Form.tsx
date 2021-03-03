@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, TextField } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import useData from "./useData";
 
 type FormInput = {
   newTodo: string;
@@ -9,6 +9,7 @@ type FormInput = {
 
 export default () => {
   const { register, handleSubmit, errors } = useForm();
+  const { createTodo } = useData();
 
   console.log(errors);
   const rules = {
@@ -20,9 +21,7 @@ export default () => {
   };
 
   const onSubmit = async (data: FormInput) => {
-    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/todo`, {
-      newTodo: data.newTodo,
-    });
+    await createTodo(data.newTodo)
   };
 
   return (
