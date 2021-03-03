@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && rm -rf ../server/public && cp -R build/ ../server/public/"
+    "build": "react-scripts build"
   },
   "browserslist": {
     "production": [

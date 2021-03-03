@@ -10,9 +10,9 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: project-server-svc
+          serviceName: project-client-svc
           servicePort: 2345
-      - path: /pingpong
+      - path: /api
         backend:
-          serviceName: ping-pong-svc
+          serviceName: project-server-svc
           servicePort: 2345

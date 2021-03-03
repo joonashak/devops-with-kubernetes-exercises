@@ -18,7 +18,7 @@ export default () => {
     <Card className={classes.card}>
       <CardHeader title="Image of the Day" />
       <img
-        src={`${process.env.REACT_APP_BACKEND_URL}daily`}
+        src={`${process.env.REACT_APP_BACKEND_URL}/daily`}
         className={classes.image}
       />
     </Card>

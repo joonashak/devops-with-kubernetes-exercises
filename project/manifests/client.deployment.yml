@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-client-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-client
+  template:
+    metadata:
+      labels:
+        app: project-client
+    spec:
+      containers:
+        - name: project-client
+          image: joonashak/dwk-project-client
