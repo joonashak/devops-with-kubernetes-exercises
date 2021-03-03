@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: project-pv
+  namespace: dwk-project
 spec:
   storageClassName: manual
   capacity:
@@ -26,6 +27,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: project-claim
+  namespace: dwk-project
 spec:
   storageClassName: manual
   accessModes:
