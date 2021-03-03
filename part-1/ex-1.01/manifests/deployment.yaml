@@ -27,3 +27,9 @@ spec:
           volumeMounts:
           - name: shared-main
             mountPath: /app/files
+          env:
+          - name: MESSAGE
+            valueFrom:
+              configMapKeyRef:
+                name: main-app-config
+                key: MESSAGE
