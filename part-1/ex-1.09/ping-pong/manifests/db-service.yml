@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ping-pong-db-svc
+  namespace: main
+  labels:
+    app: ping-pong-db
+spec:
+  ports:
+  - port: 5432
+    name: db
+  clusterIP: None
+  selector:
+    app: ping-pong

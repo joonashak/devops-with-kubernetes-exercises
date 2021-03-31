@@ -16,3 +16,15 @@ spec:
       containers:
         - name: ping-pong
           image: joonashak/dwk-ping-pong
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: ping-pong-db-pwd
+            - name: PGHOST
+              value: ping-pong-db-svc
+            - name: PGUSER
+              value: postgres
+            - name: PGDATABASE
+              value: postgres
